@@ -1,7 +1,6 @@
 import java.util.Scanner;
-// import java.util.*;
 
-public class asscatch{
+public class prototype{
     public static void main(String[] args){   
         System.out.println("Please enter the rows in the Matriks");
 		Scanner sc = new Scanner(System.in);
