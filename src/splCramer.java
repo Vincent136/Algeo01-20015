@@ -62,11 +62,15 @@ public class splCramer{
         float detMatA = determinanKofaktor.Determinan(matriksA);
         float detMatCramer;
         float[][] matriksCramer = new float[n][n];
-        System.out.println(detMatA);
+        float[] spl = new float[n];
         while (k < n){
             replaceWithB(k, matriksCramer);
-            matrix.tulisMatrix(matriksCramer);
+            detMatCramer = determinanKofaktor.Determinan(matriksCramer);
+            spl[k] = detMatCramer / detMatA;
             k++;
+        }
+        for (int i = 0; i < n; i++) {
+            System.out.println("X" + (i + 1) + "=" + spl[i]);
         }
     }
 }
