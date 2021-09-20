@@ -1,39 +1,18 @@
 import java.util.Scanner;
 
 public class matrix {
-    private int r;             
-    private int c;             
-    private int[][] Matriks;   
-
-    public matrix() {
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println();
-        System.out.print("Masukan baris: "); r = keyboard.nextInt();
-        System.out.print("Masukan kolom: "); c = keyboard.nextInt();
-        Matriks = new int[r][c];
-        System.out.println("Please assign the following elements: ");
-        for(int i = 0; i < r; i++){
-            for(int j = 0; j < c; j++){
-                System.out.print("[" + i + "]" + "[" + j + "]: ");
-                Matriks[i][j] = keyboard.nextInt();
-            }
-        }
-        keyboard.close();
-    }
-
-    public void tulisMatrix() {
-        for (int i = 0; i < r; i++) {
-            for (int j = 0; j < c; j++) {
-                System.out.print(String.format("%d ", Matriks[i][j]));
+    public static void tulisMatrix(float[][] keluaran) {
+        for (int i = 0; i < keluaran.length; i++) {
+            for (int j = 0; j < keluaran[0].length; j++) {
+                System.out.print(String.format("%.2f ", keluaran[i][j]));
             }
             System.out.println();
         }
     }
-
-    public void transformMatrix() {
-        for (int i = 0; i < r; i++) {
-            for (int j = 0; j < c; j++) {
-                Matriks[i][j] = 1; 
+    public static void copyMatrix(float[][] Matriks1, float[][] Matriks2) {
+        for (int i = 0; i < Matriks1.length; i++) {
+            for (int j = 0; j < Matriks1[0].length; j++) {
+                Matriks1[i][j] = Matriks2[i][j];
             }
         }
     }
