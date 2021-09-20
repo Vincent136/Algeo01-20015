@@ -1,7 +1,7 @@
 # Tubes1Algeo
 
 #Jaya : Gauss /GaussJordan /Determinan Reduksi
-#Vincent : Cramer/Kofaktor
-#Nicho : Balikan/Determinan Balikan  
+#Vincent : Spl Cramer/Determinan Kofaktor
+#Nicho : Balikan/Spl Balikan  
 
 Deadline: 
