@@ -15,7 +15,7 @@ public class determinanKofaktor {
         }
     }
 
-    public static float Determinan(float[][]Matriks){
+    public static float determinankofaktor(float[][]Matriks){
         float determinan;
         float[][] potong = new float[Matriks.length-1][Matriks[0].length -1];
         if (Matriks.length == 1) {
@@ -25,7 +25,7 @@ public class determinanKofaktor {
             int plusminus = 1;
             for(int i = 0; i < Matriks.length; i++){
                 potongMatriks(Matriks,potong, 0, i);
-                determinan = determinan + plusminus * Matriks[0][i] * Determinan(potong);
+                determinan = determinan + plusminus * Matriks[0][i] * determinankofaktor(potong);
                 plusminus = -plusminus;
             }
         }

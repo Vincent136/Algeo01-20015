@@ -59,13 +59,13 @@ public class splCramer{
 
     public void cramer() {
         int k = 0;
-        float detMatA = determinanKofaktor.Determinan(matriksA);
+        float detMatA = determinanKofaktor.determinankofaktor(matriksA);
         float detMatCramer;
         float[][] matriksCramer = new float[n][n];
         float[] spl = new float[n];
         while (k < n){
             replaceWithB(k, matriksCramer);
-            detMatCramer = determinanKofaktor.Determinan(matriksCramer);
+            detMatCramer = determinanKofaktor.determinankofaktor(matriksCramer);
             spl[k] = detMatCramer / detMatA;
             k++;
         }
