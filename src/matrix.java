@@ -9,6 +9,7 @@ public class matrix {
             System.out.println();
         }
     }
+    
     public static void copyMatrix(float[][] Matriks1, float[][] Matriks2) {
         for (int i = 0; i < Matriks1.length; i++) {
             for (int j = 0; j < Matriks1[0].length; j++) {

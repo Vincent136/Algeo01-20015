@@ -1,5 +1,7 @@
+import java.util.Scanner;
+
 public class determinanKofaktor {
-    public static void potongMatriks(float[][] Matriks1, float[][] Matriks2,int a, int b){
+    public static void potongMatriks(double[][] Matriks1, double[][] Matriks2,int a, int b){
         int x = 0;
         for (int i = 0; i < Matriks1.length; i++) {
             if (i != a) {
@@ -15,9 +17,9 @@ public class determinanKofaktor {
         }
     }
 
-    public static float determinankofaktor(float[][]Matriks){
-        float determinan;
-        float[][] potong = new float[Matriks.length-1][Matriks[0].length -1];
+    public static double determinankofaktor(double[][]Matriks){
+        double determinan;
+        double[][] potong = new double[Matriks.length-1][Matriks[0].length -1];
         if (Matriks.length == 1) {
             determinan = Matriks[0][0];
         } else {

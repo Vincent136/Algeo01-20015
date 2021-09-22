@@ -1,75 +1,30 @@
 import java.util.Scanner;
 
 public class splCramer{
-    int n;
-    float[][] matriksA;
-    float[][] matriksAug;
-    float[] matriksB;
-
-    // konstruktor
-    public splCramer(boolean isKeyboard) {
-        if (isKeyboard) {
-
-            Scanner sc = new Scanner(System.in);
-            System.out.println();
-            System.out.print("Masukan n: ");
-            n = sc.nextInt();
-            
-            matriksA = new float[n][n];
-            
-            System.out.println("Masukkan koefisien matriks a!");
-            for(int i = 0; i < n; i++){
-                for(int j = 0; j < n; j++){
-                    System.out.print("[" + i + "]" + "[" + j + "]: ");
-                    matriksA[i][j] = sc.nextFloat();
-                }
-            }
-            
-            matriksB = new float[n];
-            
-            System.out.println("Masukkan koefisien matriks b!");
-            for(int i = 0; i < n; i++){
-                System.out.print("[" + i + "]" + ": ");
-                matriksB[i] = sc.nextFloat();
-            }
-
-            matriksAug = new float[n][n + 1];
-
-            for (int i = 0; i < n; i++){
-                for(int j = 0; j < n; j++){
-                    matriksAug[i][j] =  matriksA[i][j];
-                }
-                matriksAug[i][n] =  matriksB[i];
-            }
-            sc.close();
-        } else {
-        }
-    }
-
-    public void replaceWithB(int k, float[][] matriksNew){
-        for (int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
+    public static void replaceWithB(int k, double[][] matriksNew, double[] matriksB, double[][] matriksA){
+        for (int i = 0; i < matriksNew.length; i++){
+            for(int j = 0; j < matriksNew.length; j++){
                 matriksNew[i][j] =  matriksA[i][j];
             }
         }
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < matriksNew.length; i++){
                 matriksNew[i][k] = matriksB[i]; 
         }
     }
 
-    public void cramer() {
+    public static void cramer(double[] matriksB, double[][] matriksA) {
         int k = 0;
-        float detMatA = determinanKofaktor.determinankofaktor(matriksA);
-        float detMatCramer;
-        float[][] matriksCramer = new float[n][n];
-        float[] spl = new float[n];
-        while (k < n){
-            replaceWithB(k, matriksCramer);
+        double detMatA = determinanKofaktor.determinankofaktor(matriksA);
+        double detMatCramer;
+        double[][] matriksCramer = new double[matriksA.length][matriksA.length];
+        double[] spl = new double[matriksA.length];
+        while (k < matriksA.length){
+            replaceWithB(k, matriksCramer, matriksB, matriksA);
             detMatCramer = determinanKofaktor.determinankofaktor(matriksCramer);
             spl[k] = detMatCramer / detMatA;
             k++;
         }
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < matriksA.length; i++) {
             System.out.println("X" + (i + 1) + "=" + spl[i]);
         }
     }
