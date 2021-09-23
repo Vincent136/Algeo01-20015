@@ -12,19 +12,17 @@ public class inputKeyboard {
         
         matriks = new double[n][n];
         
-        System.out.println("Masukkan koefisien matriks a!");
+        System.out.println("Masukkan matriks a!");
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
-                System.out.print("[" + i + "]" + "[" + j + "]: ");
                 matriks[i][j] = sc.nextDouble();
             }
         }
         
         matriksB = new double[n][1];
         
-        System.out.println("Masukkan koefisien matriks b!");
+        System.out.println("Masukkan matriks b!");
         for(int i = 0; i < n; i++){
-            System.out.print("[" + i + "]" + ": ");
             matriksB[i][0] = sc.nextDouble();
         }
 
@@ -101,7 +99,22 @@ public class inputKeyboard {
         return matriks;
     }
 
-    public static void inputKeyboardInterpolasi (){
+    public static double[][] inputKeyboardInterpolasi (){
+        Scanner sc= new Scanner(System.in);
+        int n;
+        double[][] matriks;
+
+        System.out.print("Masukan n: ");
+        n = sc.nextInt();
+
+        matriks = new double[n][2];
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < 2; j++){
+                matriks[i][j] = sc.nextDouble();
+            }
+        }
+        
+        return matriks;
     }
 
     public static void inputKeyboardRegresi (){

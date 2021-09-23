@@ -15,20 +15,29 @@ public class menu {
             System.out.println("6. Keluar");
 
             System.out.print("Masukan pilihan : ");
+
             choice = sc.nextInt();
             if (choice == 1) {
+                System.out.println();
                 System.out.println("Menu");
                 System.out.println("1. Gauss");
                 System.out.println("2. Gauss Jordan");
                 System.out.println("3. Matriks Balikan");
                 System.out.println("4. Cramer");
+
+                System.out.print("Masukan pilihan : ");
+
                 choice = sc.nextInt();
                 if (choice == 4) {
                     double[][] M = inputKeyboard.inputKeyboardCramer();
-                    matrix.tulisMatrix(M);
+                    double[] hasil = kofaktorPlus.cramer(M);
+                    for (int i = 0; i < hasil.length; i++) {
+                        System.out.println("X" + (i + 1) + "=" + hasil[i]);
+                    }
                 }
             }
             else if (choice == 2) {
+                System.out.println();
                 System.out.println("Menu");
                 System.out.println("1. Reduksi");
                 System.out.println("2. Kofaktor");
@@ -41,14 +50,17 @@ public class menu {
             else if (choice == 3) {
             }
             else if (choice == 4) {
+                double[][]Mi = inputKeyboard.inputKeyboardInterpolasi();
+                interpolasi.interpolasiPolinom(Mi);
             }
             else if (choice == 5) {
             }
             else if (choice == 6) {
-                    keluar = true;
-                    break;
+                keluar = true;
+                break;
             }
         }
+        System.out.println();
         sc.close();
     }
 }
