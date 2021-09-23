@@ -8,7 +8,7 @@ public class reductionPlus{
 		System.out.println("Please enter the columns in the Matriks");
 		int column = sc.nextInt();
 
-		float[][] Matriks = new float[row][column];
+		double [][] Matriks = new double [row][column];
 
 		for (int r = 0; r < row; r++) {
 			for (int c = 0; c < column; c++) {
@@ -40,8 +40,12 @@ public class reductionPlus{
         // System.out.println(DeterminanReduksi(Matriks));
     }
 
-    public static void Reduction(float[][] Matriks){
-        float Multiplier;
+    //Merubah matrix diinput menjadi matrix yg bawahnya doang 0 0 0.
+    //Contoh:   9 9 9       * * *
+    //          8 8 8 ->    0 * *
+    //          8 8 8       0 0 *
+    public static void Reduction(double [][] Matriks){
+        double  Multiplier;
         int c_alternative;
         int konts = 1;
         for (int c = 0; c < Matriks.length; c++){
@@ -74,15 +78,16 @@ public class reductionPlus{
             }
         }
     }
-
-    public static void SwapRow(float[][] Matriks,int a,int b) {
-        float[] temp;
+    //Menukar row 
+    public static void SwapRow(double [][] Matriks,int a,int b) {
+        double [] temp;
         temp = Matriks[a];
         Matriks[a] = Matriks[b];
         Matriks[b] = temp;
     }
 
-    public static void PrintMatriks(float[][] Matriks) {
+    //print matrix
+    public static void PrintMatriks(double [][] Matriks) {
         for (int r = 0; r < Matriks.length; r++) {
 			for (int c = 0; c < Matriks[0].length; c++) {
 				System.out.print(Matriks[r][c] + "\t");
@@ -91,8 +96,12 @@ public class reductionPlus{
         }
     }
     
-    public static void MakeRowOne(float[][] Matriks){
-        float divider;
+    //Membagi tiap row dengan bilangan paling kira tak 0
+    //Contoh:   9 18 9      1 2 1
+    //          0 8 8 ->    0 1 1
+    //          0 0 8       0 0 1
+    public static void MakeRowOne(double [][] Matriks){
+        double  divider;
         for (int r = 0; r < Matriks.length; r++) {
             int x=0;
             while (x < Matriks[0].length){
@@ -112,8 +121,13 @@ public class reductionPlus{
         }
     }
 
-    public static void SecondaryReduction(float[][] Matriks){
-        float divider;
+    //Merubah matrix diinput menjadi matrix yg atasnya doang 0 0 0.
+    //I.S: udah direduksi dulu SecondaryReduction(Reduction())
+    //Contoh:   9 9 9      * 0 0
+    //          0 9 8 ->    0 * 0
+    //          0 0 8       0 0 *
+    public static void SecondaryReduction(double [][] Matriks){
+        double  divider;
         for (int r = 1; r < Matriks.length; r++) {
             int x=0;
             while (x < Matriks[0].length){
@@ -137,12 +151,13 @@ public class reductionPlus{
         }
     }
 
-    public static void SPLGauss(float[][] Matriks){}
+    public static void SPLGauss(double [][] Matriks){}
 
-    public static void SPLGaussJordan(float[][] Matriks){}
+    public static void SPLGaussJordan(double [][] Matriks){}
 
-    public static float DeterminanReduksi(float[][] Matriks){
-        float Determinan = 1;
+    //Mereturn determinan dengan metode reduksi
+    public static double  DeterminanReduksi(double [][] Matriks){
+        double  Determinan = 1;
         Reduction(Matriks);
         if (Matriks.length == Matriks[0].length){
             for (int i = 0; i < Matriks.length; i++) {
