@@ -6,7 +6,9 @@ public class interpolasi {
         // baca input x
         double x;
         Scanner sc = new Scanner(System.in);
+        System.out.print("Masukan x: ");
         x = sc.nextDouble();
+        System.out.println();
 
         // mengubah input menjadi matriks persamaan linier
         double[][] matriksA = new double[matriks.length][matriks.length];
@@ -35,7 +37,6 @@ public class interpolasi {
         for (int i = 0; i < hasil.length; i++){
             sum = sum + hasil[i] * Math.pow(x, i);
         }
-        System.out.println("Hasil :" + String.format("%.4f", sum));
 
         System.out.print("P" + (matriks.length - 1) + "(x) = ");
 
@@ -67,7 +68,7 @@ public class interpolasi {
                     if (hasil[i] > 0) {
                         System.out.print(" + " + String.format("%.4f", hasil[i]) + "x^" + i);
                     } else {
-                        System.out.print(" - " + String.format("%.4f", hasil[i]) + "x^" + i);
+                        System.out.print(" - " + String.format("%.4f", -hasil[i]) + "x^" + i);
                     }
                 } else {
                     if (hasil[i] != 0){
@@ -77,6 +78,10 @@ public class interpolasi {
                 }
             }
         }
+        System.out.println();
+        // print P(X) dengan X sesuai input dari user
+        System.out.println("P" + (matriks.length - 1) + "(" + x + ") = " +String.format("%.4f", sum));
+
         System.out.println();
     }
 }

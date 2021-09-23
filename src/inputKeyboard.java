@@ -9,7 +9,19 @@ public class inputKeyboard {
         double[][] matriksAug;
         System.out.print("Masukan n: ");
         n = sc.nextInt();
+        if (n <= 0){
+            boolean isValid = false;
+            while(!isValid){
+                System.out.println("Masukan tidak boleh kurang dari sama dengan 0! ulangi!");
+                System.out.print("Masukan n: ");
+                n = sc.nextInt();
+                if (n > 0) {
+                    isValid = true;
+                }
+            }
+        }
         
+
         matriks = new double[n][n];
         
         System.out.println("Masukkan matriks a!");
@@ -46,8 +58,30 @@ public class inputKeyboard {
         double[][] matriksAug;
         System.out.print("Masukan n: ");
         n = sc.nextInt();
+        if (n <= 0){
+            boolean isValid = false;
+            while(!isValid){
+                System.out.println("Masukan tidak boleh kurang dari sama dengan 0! ulangi!");
+                System.out.print("Masukan n: ");
+                n = sc.nextInt();
+                if (n > 0) {
+                    isValid = true;
+                }
+            }
+        }
         System.out.print("Masukan m: ");
         m = sc.nextInt();
+        if (m <= 0){
+            boolean isValid = false;
+            while(!isValid){
+                System.out.println("Masukan tidak boleh kurang dari sama dengan 0! ulangi!");
+                System.out.print("Masukan m: ");
+                m = sc.nextInt();
+                if (m > 0) {
+                    isValid = true;
+                }
+            }
+        }
         
         matriks = new double[n][n];
         
@@ -86,6 +120,17 @@ public class inputKeyboard {
 
         System.out.print("Masukan n: ");
         n = sc.nextInt();
+        if (n <= 0){
+            boolean isValid = false;
+            while(!isValid){
+                System.out.println("Masukan tidak boleh kurang dari sama dengan 0! ulangi!");
+                System.out.print("Masukan n: ");
+                n = sc.nextInt();
+                if (n > 0) {
+                    isValid = true;
+                }
+            }
+        }
         
         matriks = new double[n][n];
         
@@ -106,6 +151,17 @@ public class inputKeyboard {
 
         System.out.print("Masukan n: ");
         n = sc.nextInt();
+        if (n <= 0){
+            boolean isValid = false;
+            while(!isValid){
+                System.out.println("Masukan tidak boleh kurang dari sama dengan 0! ulangi!");
+                System.out.print("Masukan n: ");
+                n = sc.nextInt();
+                if (n > 0) {
+                    isValid = true;
+                }
+            }
+        }
 
         matriks = new double[n][2];
         for(int i = 0; i < n; i++){
