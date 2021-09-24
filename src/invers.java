@@ -17,8 +17,30 @@ class invers {
                 Matriks[r][c] = sc.nextInt();
             }
         }
-        sc.close();
         return Matriks;
+    }
+
+    public static double[] InputBaris() {
+        System.out.println("Please enter the rows in the arrays");
+        Scanner ar = new Scanner(System.in);
+        int row = ar.nextInt();
+
+        double[] Baris = new double[row];
+
+        for (int x = 0; x < row; x++) {
+            System.out.println(String.format("Enter Arrays[%d] integer", x));
+            Baris[x] = ar.nextInt();
+        }
+        return Baris;
+    }
+
+    public static boolean IsSquare(double[][] Matrix) {
+        for (int i = 0, l = Matrix.length; i < l; i++) {
+            if (Matrix[i].length != l) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void PrintMatrix(double[][] Matriks) {
@@ -28,6 +50,41 @@ class invers {
             }
             System.out.print("\n");
         }
+    }
+
+    public static double Determinan(double[][] Matriks) {
+        double determinan;
+        double[][] potong = new double[Matriks.length - 1][Matriks[0].length - 1];
+        if (Matriks.length == 1) {
+            determinan = Matriks[0][0];
+        } else {
+            determinan = 0;
+            int plusminus = 1;
+            for (int i = 0; i < Matriks.length; i++) {
+                potong = potongMatriks(Matriks, 0, i);
+                determinan = determinan + plusminus * Matriks[0][i] * Determinan(potong);
+                plusminus = -plusminus;
+            }
+        }
+        return determinan;
+    }
+
+    public static double[][] potongMatriks(double[][] Matriks1, int a, int b) {
+        int x = 0;
+        double[][] Matriks2 = new double[Matriks1.length - 1][Matriks1[0].length - 1];
+        for (int i = 0; i < Matriks1.length; i++) {
+            if (i != a) {
+                int y = 0;
+                for (int j = 0; j < Matriks1.length; j++) {
+                    if (j != b) {
+                        Matriks2[x][y] = Matriks1[i][j];
+                        y++;
+                    }
+                }
+                x++;
+            }
+        }
+        return Matriks2;
     }
 
     public static double[][] MinorMatriks(double[][] Matriks) {
@@ -62,80 +119,61 @@ class invers {
     }
 
     public static void InverseMatriks(double[][] Matriks) {
-        double det;
-        det = Determinan(Matriks);
-        double[][] temp1 = new double[Matriks.length][Matriks[0].length];
-        double[][] temp2 = new double[Matriks.length][Matriks[0].length];
-        if (det == 0)
-            System.out.println("Tidak ada invers");
-        else {
-            temp1 = MinorMatriks(Matriks);
-            KofaktorMatriks(temp1);
-            temp1 = TransposeMatriks(temp1);
-            for (int i = 0; i < Matriks.length; i++) {
-                for (int j = 0; j < Matriks.length; j++) {
-                    temp2[i][j] = (1 / Determinan(Matriks)) * temp1[i][j];
-                }
-            }
-            for (int i = 0; i < Matriks.length; i++) {
-                for (int j = 0; j < Matriks.length; j++) {
-                    Matriks[i][j] = temp2[i][j];
-                }
-            }
-            PrintMatrix(Matriks);
-        }
-    }
 
-    public static double[][] potongMatriks(double[][] Matriks1, int a, int b) {
-        int x = 0;
-        double[][] Matriks2 = new double[Matriks1.length - 1][Matriks1[0].length - 1];
-        for (int i = 0; i < Matriks1.length; i++) {
-            if (i != a) {
-                int y = 0;
-                for (int j = 0; j < Matriks1.length; j++) {
-                    if (j != b) {
-                        Matriks2[x][y] = Matriks1[i][j];
-                        y++;
+        if (IsSquare(Matriks)) {
+            double det;
+            det = Determinan(Matriks);
+            double[][] temp1 = new double[Matriks.length][Matriks[0].length];
+            double[][] temp2 = new double[Matriks.length][Matriks[0].length];
+            if (det == 0)
+                System.out.println("Tidak ada invers");
+            else {
+                temp1 = MinorMatriks(Matriks);
+                KofaktorMatriks(temp1);
+                temp1 = TransposeMatriks(temp1);
+                for (int i = 0; i < Matriks.length; i++) {
+                    for (int j = 0; j < Matriks.length; j++) {
+                        temp2[i][j] = (1 / Determinan(Matriks)) * temp1[i][j];
                     }
                 }
-                x++;
+                for (int i = 0; i < Matriks.length; i++) {
+                    for (int j = 0; j < Matriks.length; j++) {
+                        Matriks[i][j] = temp2[i][j];
+                    }
+                }
             }
-        }
-        return Matriks2;
-    }
-
-    public static double Determinan(double[][] Matriks) {
-        double determinan;
-        double[][] potong = new double[Matriks.length - 1][Matriks[0].length - 1];
-        if (Matriks.length == 1) {
-            determinan = Matriks[0][0];
         } else {
-            determinan = 0;
-            int plusminus = 1;
-            for (int i = 0; i < Matriks.length; i++) {
-                potong = potongMatriks(Matriks, 0, i);
-                determinan = determinan + plusminus * Matriks[0][i] * Determinan(potong);
-                plusminus = -plusminus;
-            }
+            System.out.println("Matrix tidak persegi");
         }
-        return determinan;
+
     }
 
-    public static void SPL(double[][] Matriks) {
-
+    public static String[] SPL(double[][] Matriks, double[] Baris) {
+        double[] Hasil = new double[Matriks.length];
+        String[] akhir = new String[Matriks.length];
+        for (int i = 0; i < Matriks.length; i++) {
+            double total = 0;
+            for (int j = 0; j < Matriks.length; j++) {
+                total += Matriks[i][j] * Baris[j];
+            }
+            Hasil[i] = total;
+        }
+        for (int i = 0; i < Hasil.length; i++) {
+            akhir[i] = (String.format("x%d = %,.2f", i + 1, Hasil[i]));
+        }
+        return akhir;
     }
 
     public static void main(String[] args) {
         double[][] m1;
+        double[] baris;
+        String[] l2;
         m1 = InputMatrix();
-        // x = Determinan(m1);
-        // System.out.println(x);
-        // // PrintMatrix(m1);
-        // m2 = MinorMatriks(m1);
-        // KofaktorMatriks(m2);
-        // // PrintMatrix(m2);
-        // m3 = TransposeMatriks(m2);
-        // PrintMatrix(m3);
         InverseMatriks(m1);
+        baris = InputBaris();
+        l2 = SPL(m1, baris);
+        for (int i = 0; i < l2.length; i++) {
+            System.out.println(String.format("%s", l2[i]));
+        }
     }
 }
