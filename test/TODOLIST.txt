@@ -1,0 +1,16 @@
+TODOLIST:
+
+1.a DONE
+1.b DONE
+1.c DONE
+1.d 
+2.a DONE
+2.b DONE
+3.a DONE
+3.b DONE
+4.
+5.  
+6.a DONE 
+6.b DONE 
+6.c DONE 
+7
