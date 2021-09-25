@@ -1,5 +1,4 @@
 import java.lang.Math;
-import java.util.Scanner;
 
 public class interpolasi {
     public static void interpolasiPolinom(double[][]matriks){
@@ -75,9 +74,8 @@ public class interpolasi {
         // print P(X) dengan X sesuai input dari user
 
         double x;
-        Scanner sc = new Scanner(System.in);
         System.out.print("Masukan x: ");
-        x = sc.nextDouble();
+        x = menu.scan.nextDouble();
 
 
         double sum = 0;

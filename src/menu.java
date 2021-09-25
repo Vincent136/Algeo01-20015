@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
+
 public class menu {
+    public static final Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         boolean keluar = false;
         while (!keluar){
             int choice;
@@ -16,7 +17,7 @@ public class menu {
 
             System.out.print("Masukan pilihan : ");
 
-            choice = sc.nextInt();
+            choice = scan.nextInt();
             if (choice == 1) {
                 System.out.println();
                 System.out.println("Menu");
@@ -27,31 +28,127 @@ public class menu {
 
                 System.out.print("Masukan pilihan : ");
 
-                choice = sc.nextInt();
-                if (choice == 4) {
-                    double[][] M = inputKeyboard.inputKeyboardSplSquare();
-                    double[] hasil = kofaktorPlus.cramer(M);
-                    for (int i = 0; i < hasil.length; i++) {
-                        System.out.println("X" + (i + 1) + "=" + hasil[i]);
+                choice = scan.nextInt();
+                if (choice == 1) {
+                    System.out.println();
+                    System.out.println("Menu");
+                    System.out.println("1. Input keyboard");
+                    System.out.println("2. Input file");
+                    System.out.print("Masukan pilihan : ");
+
+                    choice = scan.nextInt();  
+                    if (choice == 1) {
+
+                    } else if (choice == 2) {
+                        
+                    }
+                } else if (choice == 2){
+                    System.out.println();
+                    System.out.println("Menu");
+                    System.out.println("1. Input keyboard");
+                    System.out.println("2. Input file");
+                    System.out.print("Masukan pilihan : ");
+
+                    choice = scan.nextInt();  
+                    if (choice == 1) {
+                        
+                    } else if (choice == 2) {
+                        
+                    }
+                } else if (choice == 3) {
+                    System.out.println();
+                    System.out.println("Menu");
+                    System.out.println("1. Input keyboard");
+                    System.out.println("2. Input file");
+                    System.out.print("Masukan pilihan : ");
+
+                    choice = scan.nextInt();  
+                    if (choice == 1) {
+                        
+                    } else if (choice == 2) {
+                        
+                    }
+                }else if (choice == 4) {
+                    System.out.println();
+                    System.out.println("Menu");
+                    System.out.println("1. Input keyboard");
+                    System.out.println("2. Input file");
+                    System.out.print("Masukan pilihan : ");
+
+                    choice = scan.nextInt();  
+                    if (choice == 1) {
+                        double[][] M = inputKeyboard.inputKeyboardSplSquare();
+                        double[] hasil = kofaktorPlus.cramer(M);
+                        for (int i = 0; i < hasil.length; i++) {
+                            System.out.println("X" + (i + 1) + "=" + hasil[i]);
+                        }
+                    } else if (choice == 2) {
+                        
                     }
                 }
             }
             else if (choice == 2) {
-                System.out.println();
                 System.out.println("Menu");
                 System.out.println("1. Reduksi");
                 System.out.println("2. Kofaktor");
-                choice = sc.nextInt();
-                if (choice == 2) {
-                    double[][] M = inputKeyboard.inputKeyboardDeterminan();
-                    matrix.tulisMatrix(M);
+                choice = scan.nextInt();
+                if (choice == 1) {
+                    System.out.println();
+                    System.out.println("Menu");
+                    System.out.println("1. Input keyboard");
+                    System.out.println("2. Input file");
+                    System.out.print("Masukan pilihan : ");
+
+                    choice = scan.nextInt();  
+                    if (choice == 1) {
+                        
+                    } else if (choice == 2) {
+                        
+                    }
+                } else if (choice == 2) {
+                    System.out.println();
+                    System.out.println("Menu");
+                    System.out.println("1. Input keyboard");
+                    System.out.println("2. Input file");
+                    System.out.print("Masukan pilihan : ");
+
+                    choice = scan.nextInt();  
+                    if (choice == 1) {
+                        double[][] M = inputKeyboard.inputKeyboardDeterminan();
+                        matrix.tulisMatrix(M);
+                    } else if (choice == 2) {
+                        
+                    }
                 }
             } 
             else if (choice == 3) {
+                System.out.println();
+                System.out.println("Menu");
+                System.out.println("1. Input keyboard");
+                System.out.println("2. Input file");
+                System.out.print("Masukan pilihan : ");
+
+                choice = scan.nextInt();  
+                if (choice == 1) {
+                    
+                } else if (choice == 2) {
+                    
+                }
             }
             else if (choice == 4) {
-                double[][]Mi = inputKeyboard.inputKeyboardInterpolasi();
-                interpolasi.interpolasiPolinom(Mi);
+                System.out.println();
+                System.out.println("Menu");
+                System.out.println("1. Input keyboard");
+                System.out.println("2. Input file");
+                System.out.print("Masukan pilihan : ");
+
+                choice = scan.nextInt();  
+                if (choice == 1) {
+                    double[][]Mi = inputKeyboard.inputKeyboardInterpolasi();
+                    interpolasi.interpolasiPolinom(Mi);
+                } else if (choice == 2) {
+                    
+                }
             }
             else if (choice == 5) {
             }
@@ -61,6 +158,6 @@ public class menu {
             }
         }
         System.out.println();
-        sc.close();
+        scan.close();
     }
 }
