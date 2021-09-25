@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class inputKeyboard {
-    public static double[][] inputKeyboardCramer(){
+    public static double[][] inputKeyboardSplSquare(){
         Scanner sc = new Scanner(System.in);
         int n;
         double[][] matriks;
@@ -137,7 +137,6 @@ public class inputKeyboard {
         System.out.println("Masukkan koefisien matriks a!");
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
-                System.out.print("[" + i + "]" + "[" + j + "]: ");
                 matriks[i][j] = sc.nextDouble();
             }
         }

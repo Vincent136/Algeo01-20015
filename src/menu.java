@@ -29,7 +29,7 @@ public class menu {
 
                 choice = sc.nextInt();
                 if (choice == 4) {
-                    double[][] M = inputKeyboard.inputKeyboardCramer();
+                    double[][] M = inputKeyboard.inputKeyboardSplSquare();
                     double[] hasil = kofaktorPlus.cramer(M);
                     for (int i = 0; i < hasil.length; i++) {
                         System.out.println("X" + (i + 1) + "=" + hasil[i]);
