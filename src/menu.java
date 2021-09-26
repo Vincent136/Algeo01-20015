@@ -79,11 +79,13 @@ public class menu {
                     if (choice == 1) {
                         double[][] M = inputKeyboard.inputKeyboardSplSquare();
                         double[] hasil = kofaktorPlus.cramer(M);
-                        for (int i = 0; i < hasil.length; i++) {
-                            System.out.println("X" + (i + 1) + "=" + hasil[i]);
-                        }
+                        String[] akhir = kofaktorPlus.cramerToString(hasil);
+                        InputOutput.WriteToFile(akhir);
                     } else if (choice == 2) {
-                        
+                        double[][] M = InputOutput.ReadMatrixFromFile();
+                        double[] hasil = kofaktorPlus.cramer(M);
+                        String[] akhir = kofaktorPlus.cramerToString(hasil);
+                        InputOutput.WriteToFile(akhir);
                     }
                 }
             }
@@ -115,9 +117,10 @@ public class menu {
                     choice = scan.nextInt();  
                     if (choice == 1) {
                         double[][] M = inputKeyboard.inputKeyboardDeterminan();
-                        matrix.tulisMatrix(M);
+                        System.out.println("Determinan matriks = " + kofaktorPlus.determinankofaktor(M));
                     } else if (choice == 2) {
-                        
+                        double[][] M = InputOutput.ReadMatrixFromFile();
+                        System.out.println("Determinan matriks = " + kofaktorPlus.determinankofaktor(M));
                     }
                 }
             } 
@@ -151,6 +154,18 @@ public class menu {
                 }
             }
             else if (choice == 5) {
+                System.out.println();
+                System.out.println("Menu");
+                System.out.println("1. Input keyboard");
+                System.out.println("2. Input file");
+                System.out.print("Masukan pilihan : ");
+
+                choice = scan.nextInt();  
+                if (choice == 1) {
+                    
+                } else if (choice == 2) {
+                    
+                }
             }
             else if (choice == 6) {
                 keluar = true;
