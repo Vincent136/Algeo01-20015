@@ -52,6 +52,24 @@ public class InputOutput {
         }
     }
 
+    // Menanya kalau mau write to file, kalo yes return true, kalo no return false
+    public static boolean DoYouWantToWriteToFile(){
+        System.out.print("Apakah ingin di save di file?(Y/N) ");    
+        String Option = scan.next().toUpperCase();
+        
+        while(Option != "Y" && Option != "N" ){
+            System.out.print("Input Salah!"); 
+            System.out.print("Apakah ingin di save di file?(Y/N) ");    
+            Option = scan.next().toUpperCase();
+        }
+        if(Option == "Y" ){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     //Menulis (rewrite/create) MatriksofDouble ke file kosong dengan nama berdasarkan input
     //Input diasumsikan benar
     public static void WriteMatrixToFile(double[][] Matriks){
