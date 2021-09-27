@@ -28,7 +28,21 @@ public class regresi{
             temp[i][0] = sum;
         }
         double[] hasil = kofaktorPlus.cramer(temp);
-        String[] output = kofaktorPlus.cramerToString(hasil);
-        inputKeyboard.outputJawabanSPL(output);
+        
+        System.out.print("Y = ");
+        for(int i = 0; i < hasil.length; i++){
+            if (i == 0) {
+                if (hasil[i] != 0){
+                    System.out.print(String.format("%.4f ", hasil[i]));
+                }
+            } else {
+                if (hasil[i] < 0) {
+                    System.out.print(String.format("- %.4f X%d", -hasil[i], i));
+                } else if (hasil[i] > 0) {
+                    System.out.print(String.format("+ %.4f X%d", hasil[i], i));
+                }
+            }
+        }
+        System.out.println();
     }
 }

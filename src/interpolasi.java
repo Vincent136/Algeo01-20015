@@ -7,7 +7,7 @@ public class interpolasi {
         reductionPlus.SecondaryReduction(Matriks);
         return Matriks;
     }
-    public static void interpolasiPolinom(double[][]matriks){
+    public static String[] interpolasiPolinom(double[][]matriks){
         //baca input x
         System.out.println();
 
@@ -17,7 +17,7 @@ public class interpolasi {
         double[][] matriksAug = new double[matriks.length][matriks.length + 1];
         for (int i = 0; i < matriks.length; i++){
             for(int j = 0; j < matriksA[0].length; j++){
-                matriksA[i][j] = Math.pow(matriks[i][0], j);
+                matriksA[i][j] = power(matriks[i][0], j);
             }
         }
 
@@ -33,10 +33,12 @@ public class interpolasi {
         }
 
         // proses interpolasi polinom
-        double[][] temp = eselonTereduksi(matriksAug);
+        matrix.tulisMatrix(matriksAug);
+
+        double[] temp = kofaktorPlus.cramer(matriksAug);
         double[] hasil = new double[temp.length];
         for (int i = 0; i < temp.length; i++){
-            hasil[i] = temp[i][temp.length-1];
+            hasil[i] = temp[i];
         }
 
         System.out.print("P" + (matriks.length - 1) + "(x) = ");
@@ -90,11 +92,23 @@ public class interpolasi {
 
         double sum = 0;
         for (int i = 0; i < hasil.length; i++){
+            System.out.println(sum + hasil[i] * power(x, i));
             sum = sum + hasil[i] * Math.pow(x, i);
         }
 
         System.out.println("P" + (matriks.length - 1) + "(" + x + ") = " +String.format("%.4f", sum));
 
+        String[] output = new String[1];
+        output[0] = String.format("Y = %.4f", sum);
+
         System.out.println();
+
+        return output;
+    }
+    private static double power(double x, int y) {
+        double result = 1; 
+        for (int i = 0; i < y; i++) 
+        { result = result * x; } 
+        return result; 
     }
 }

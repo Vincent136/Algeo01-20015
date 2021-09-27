@@ -176,4 +176,27 @@ class invers {
             System.out.println(String.format("%s", l2[i]));
         }
     }
+
+    public static void reductionInverse(double[][] Matriks) {
+        double[][] temp = new double[Matriks.length][2 * Matriks[0].length];
+        for(int i = 0; i < Matriks.length; i++) {
+            for(int j = 0; j < Matriks.length; j++){
+                temp[i][j] = Matriks[i][j];
+            }
+        }
+        for(int j = 0; j < Matriks.length; j++){
+            temp[j][Matriks.length + j] = 1.0;
+        }
+        matrix.tulisMatrix(temp);
+        
+        reductionPlus.Reduction(temp);
+        reductionPlus.MakeRowOne(temp);
+        reductionPlus.SecondaryReduction(temp);
+
+        for(int i = 0; i < Matriks.length; i++){
+            for(int j = 0; j < Matriks.length; j++){
+                Matriks[i][j] = temp[i][Matriks.length+j];
+            }
+        }
+    }
 }

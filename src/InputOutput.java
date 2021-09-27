@@ -54,7 +54,7 @@ public class InputOutput {
 
     // Menanya kalau mau write to file, kalo yes return true, kalo no return false
     public static boolean DoYouWantToWriteToFile(){
-        System.out.print("Apakah ingin di save di file?");  
+        System.out.println("Apakah ingin di save di file?");  
         System.out.println("1.Yes");
         System.out.println("2.No");  
         int Option = scan.nextInt();

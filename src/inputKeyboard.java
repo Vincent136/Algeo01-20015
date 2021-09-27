@@ -127,7 +127,7 @@ public class inputKeyboard {
         
         matriks = new double[n][n];
         
-        System.out.println("Masukkan koefisien matriks a!");
+        System.out.println("Masukkan matriks a!");
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
                 matriks[i][j] = menu.scan.nextDouble();
@@ -199,7 +199,7 @@ public class inputKeyboard {
             }
         }
 
-        
+        System.out.println("masukan tiap baris nilai x dan y!");
         matriks = new double[k][n+1];
         for(int i = 0; i < k; i++){
             for(int j = 0; j < n+1; j++){
@@ -210,9 +210,12 @@ public class inputKeyboard {
         return matriks;
     }
 
-    public static void outputJawaban (String[] array){
+    public static void outputJawabanSPL (String[] array){
+        System.out.println();
+        System.out.println("SPL:");
         for (int i = 0; i < array.length; i++){
             System.out.println(array[i]);
         }
+        System.out.println();
     }
 }

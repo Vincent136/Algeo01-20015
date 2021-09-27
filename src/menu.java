@@ -119,10 +119,13 @@ public class menu {
                 }
             }
             else if (choice == 2) {                         //Determinan
+                System.out.println();
                 System.out.println("Menu");
                 System.out.println("1. Reduksi");
                 System.out.println("2. Kofaktor");
-                choice = scan.nextInt();        
+                System.out.print("Masukan pilihan : ");
+
+                choice = scan.nextInt();   
                 if (choice == 1) {                          //DeterminanReduksi
                     System.out.println();
                     System.out.println("Menu");
@@ -162,16 +165,55 @@ public class menu {
             else if (choice == 3) {                         //Matriks Balikan
                 System.out.println();
                 System.out.println("Menu");
-                System.out.println("1. Input keyboard");
-                System.out.println("2. Input file");
+                System.out.println("1. Adjoin");
+                System.out.println("2. Reduksi");
                 System.out.print("Masukan pilihan : ");
 
                 choice = scan.nextInt();  
-                System.out.println();
-                if (choice == 1) {                          //MatriksBalikan Keyboard
-                    
-                } else if (choice == 2) {                   //MatriksBalikan File
-                    
+                if(choice == 1) {
+                    System.out.println();
+                    System.out.println("Menu");
+                    System.out.println("1. Input keyboard");
+                    System.out.println("2. Input file");
+                    System.out.print("Masukan pilihan : ");
+
+                    choice = scan.nextInt();  
+                    System.out.println();
+                    if (choice == 1) {                          //MatriksBalikan Keyboard
+                        double[][]M = inputKeyboard.inputKeyboardDeterminan();
+                        invers.InverseMatriks(M);
+                        System.out.println();
+                        System.out.println("matriks balikan :");
+                        matrix.tulisMatrix(M);
+                    } else if (choice == 2) {                   //MatriksBalikan File
+                        double[][]M = InputOutput.ReadMatrixFromFile();
+                        invers.InverseMatriks(M);
+                        System.out.println();
+                        System.out.println("matriks balikan :");
+                        matrix.tulisMatrix(M);
+                    }
+                } else if (choice == 2) {
+                    System.out.println();
+                    System.out.println("Menu");
+                    System.out.println("1. Input keyboard");
+                    System.out.println("2. Input file");
+                    System.out.print("Masukan pilihan : ");
+
+                    choice = scan.nextInt();  
+                    System.out.println();
+                    if (choice == 1) {                          //MatriksBalikan Keyboard
+                        double[][]M = inputKeyboard.inputKeyboardDeterminan();
+                        invers.reductionInverse(M);
+                        System.out.println();
+                        System.out.println("matriks balikan :");
+                        matrix.tulisMatrix(M);
+                    } else if (choice == 2) {                   //MatriksBalikan File
+                        double[][]M = InputOutput.ReadMatrixFromFile();
+                        invers.reductionInverse(M);
+                        System.out.println();
+                        System.out.println("matriks balikan :");
+                        matrix.tulisMatrix(M);
+                    }
                 }
             }
             else if (choice == 4) {                         //Interpolasi Polinom
@@ -212,7 +254,8 @@ public class menu {
                     double[][]M = inputKeyboard.inputKeyboardRegresi();
                     regresi.regresiLinierBerganda(M);
                 } else if (choice == 2) {                   //Regresi Linear Berganda Keyboard
-                    
+                    double[][]M = InputOutput.ReadMatrixFromFile();
+                    regresi.regresiLinierBerganda(M);
                 }
             }
             else if (choice == 6) {                         //Exit
