@@ -37,6 +37,8 @@ public class menu {
                     System.out.print("Masukan pilihan : ");
 
                     choice = scan.nextInt();  
+                    System.out.println();
+
                     if (choice == 1) {                      //SPLGauss Keyboard
                         double[][] M = inputKeyboard.inputKeyboardSpl();
                         String[] akhir = reductionPlus.SPLGauss(M);
@@ -58,6 +60,8 @@ public class menu {
                     System.out.print("Masukan pilihan : ");
 
                     choice = scan.nextInt();  
+                    System.out.println();
+
                     if (choice == 1) {                      //SPLGaussJordan Keyboard
                         double[][] M = inputKeyboard.inputKeyboardSpl();
                         String[] akhir = reductionPlus.SPLGaussJordan(M);
@@ -79,6 +83,7 @@ public class menu {
                     System.out.print("Masukan pilihan : ");
 
                     choice = scan.nextInt();  
+                    System.out.println();
                     if (choice == 1) {                      //SPLMatriksBalikan Keyboard
                         
                     } else if (choice == 2) {               //SPLMatriksBalikan File
@@ -92,6 +97,8 @@ public class menu {
                     System.out.print("Masukan pilihan : ");
 
                     choice = scan.nextInt();  
+                    System.out.println();
+
                     if (choice == 1) {                      //SPLCramer Keyboard
                         double[][] M = inputKeyboard.inputKeyboardSplSquare();
                         double[] hasil = kofaktorPlus.cramer(M);
@@ -124,6 +131,8 @@ public class menu {
                     System.out.print("Masukan pilihan : ");
 
                     choice = scan.nextInt();  
+                    System.out.println();
+
                     if (choice == 1) {                      //DeterminanReduksi Keyboard
                         double[][] M = inputKeyboard.inputKeyboardDeterminan();
                         System.out.println("Determinan matriks = %.3f" + reductionPlus.DeterminanReduksi(M));
@@ -139,6 +148,8 @@ public class menu {
                     System.out.print("Masukan pilihan : ");
 
                     choice = scan.nextInt();  
+                    System.out.println();
+
                     if (choice == 1) {                      //DeterminanReduksi Kofaktor Keyboard
                         double[][] M = inputKeyboard.inputKeyboardDeterminan();
                         System.out.println("Determinan matriks = " + kofaktorPlus.determinankofaktor(M));
@@ -156,6 +167,7 @@ public class menu {
                 System.out.print("Masukan pilihan : ");
 
                 choice = scan.nextInt();  
+                System.out.println();
                 if (choice == 1) {                          //MatriksBalikan Keyboard
                     
                 } else if (choice == 2) {                   //MatriksBalikan File
@@ -170,11 +182,20 @@ public class menu {
                 System.out.print("Masukan pilihan : ");
 
                 choice = scan.nextInt();  
+                System.out.println();
+
                 if (choice == 1) {                          //Interpolasi Polinom Keyboard
                     double[][]Mi = inputKeyboard.inputKeyboardInterpolasi();
-                    interpolasi.interpolasiPolinom(Mi);
+                    String[] akhir = interpolasi.interpolasiPolinom(Mi);
+                    if(InputOutput.DoYouWantToWriteToFile()){
+                        InputOutput.WriteToFile(akhir);
+                    }
                 } else if (choice == 2) {                   //Interpolasi Polinom File
-                    
+                    double[][]Mi = InputOutput.ReadMatrixFromFile();
+                    String[] akhir = interpolasi.interpolasiPolinom(Mi);
+                    if(InputOutput.DoYouWantToWriteToFile()){
+                        InputOutput.WriteToFile(akhir);
+                    }
                 }
             }
             else if (choice == 5) {                         //Regresi Linear Berganda
@@ -184,10 +205,12 @@ public class menu {
                 System.out.println("2. Input file");
                 System.out.print("Masukan pilihan : ");
 
-                choice = scan.nextInt();  
+                choice = scan.nextInt();
+                System.out.println();
+
                 if (choice == 1) {                          //Regresi Linear Berganda File
                     double[][]M = inputKeyboard.inputKeyboardRegresi();
-                    matrix.tulisMatrix(M);
+                    regresi.regresiLinierBerganda(M);
                 } else if (choice == 2) {                   //Regresi Linear Berganda Keyboard
                     
                 }
