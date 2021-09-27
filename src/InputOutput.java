@@ -54,15 +54,19 @@ public class InputOutput {
 
     // Menanya kalau mau write to file, kalo yes return true, kalo no return false
     public static boolean DoYouWantToWriteToFile(){
-        System.out.print("Apakah ingin di save di file?(Y/N) ");    
-        String Option = scan.next().toUpperCase();
+        System.out.print("Apakah ingin di save di file?");  
+        System.out.println("1.Yes");
+        System.out.println("2.No");  
+        int Option = scan.nextInt();
         
-        while(Option != "Y" && Option != "N" ){
+        while(Option != 1 && Option != 2 ){
             System.out.print("Input Salah!"); 
-            System.out.print("Apakah ingin di save di file?(Y/N) ");    
-            Option = scan.next().toUpperCase();
+            System.out.println("Apakah ingin di save di file?");    
+            System.out.println("1.Yes");
+            System.out.println("2.No");
+            Option = scan.nextInt();
         }
-        if(Option == "Y" ){
+        if(Option == 1 ){
             return true;
         }
         else{

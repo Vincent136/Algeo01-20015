@@ -30,7 +30,7 @@ public class inputKeyboard {
         
         matriksB = new double[n][1];
         
-        System.out.println("Masukkan matriks b!");
+        System.out.println("Masukkan baris b!");
         for(int i = 0; i < n; i++){
             matriksB[i][0] = menu.scan.nextDouble();
         }
@@ -81,19 +81,17 @@ public class inputKeyboard {
         
         matriks = new double[n][n];
         
-        System.out.println("Masukkan koefisien matriks a!");
+        System.out.println("Masukkan matriks a!");
         for(int i = 0; i < n; i++){
             for(int j = 0; j < m; j++){
-                System.out.print("[" + i + "]" + "[" + j + "]: ");
                 matriks[i][j] = menu.scan.nextDouble();
             }
         }
         
         matriksB = new double[n][1];
         
-        System.out.println("Masukkan koefisien matriks b!");
+        System.out.println("Masukkan baris b!");
         for(int i = 0; i < n; i++){
-            System.out.print("[" + i + "]" + ": ");
             matriksB[i][0] = menu.scan.nextDouble();
         }
 
@@ -155,7 +153,7 @@ public class inputKeyboard {
                 }
             }
         }
-
+        System.out.println("Masukkan semua titik!");
         matriks = new double[n][2];
         for(int i = 0; i < n; i++){
             for(int j = 0; j < 2; j++){
@@ -166,6 +164,55 @@ public class inputKeyboard {
         return matriks;
     }
 
-    public static void inputKeyboardRegresi (){
+
+    public static double[][] inputKeyboardRegresi (){
+        int n;
+        int k;
+        double[][] matriks;
+
+        System.out.print("Masukan n: ");
+        n = menu.scan.nextInt();
+        
+        if (n <= 0){
+            boolean isValid = false;
+            while(!isValid){
+                System.out.println("Masukan tidak boleh kurang dari sama dengan 0! ulangi!");
+                System.out.print("Masukan n: ");
+                n = menu.scan.nextInt();
+                if (n > 0) {
+                    isValid = true;
+                }
+            }
+        }
+
+        System.out.print("Masukan k: ");
+        k = menu.scan.nextInt();
+        if (k <= 0){
+            boolean isValid = false;
+            while(!isValid){
+                System.out.println("Masukan tidak boleh kurang dari sama dengan 0! ulangi!");
+                System.out.print("Masukan k: ");
+                k = menu.scan.nextInt();
+                if (k > 0) {
+                    isValid = true;
+                }
+            }
+        }
+
+        
+        matriks = new double[k][n+1];
+        for(int i = 0; i < k; i++){
+            for(int j = 0; j < n+1; j++){
+                matriks[i][j] = menu.scan.nextDouble();
+            }
+        }
+        
+        return matriks;
+    }
+
+    public static void outputJawaban (String[] array){
+        for (int i = 0; i < array.length; i++){
+            System.out.println(array[i]);
+        }
     }
 }

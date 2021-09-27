@@ -1,8 +1,14 @@
 import java.lang.Math;
 
 public class interpolasi {
+    public static double[][] eselonTereduksi(double[][] Matriks){
+        reductionPlus.Reduction(Matriks);
+        reductionPlus.MakeRowOne(Matriks);
+        reductionPlus.SecondaryReduction(Matriks);
+        return Matriks;
+    }
     public static void interpolasiPolinom(double[][]matriks){
-        // baca input x
+        //baca input x
         System.out.println();
 
         // mengubah input menjadi matriks persamaan linier
@@ -27,7 +33,11 @@ public class interpolasi {
         }
 
         // proses interpolasi polinom
-        double[] hasil = kofaktorPlus.cramer(matriksAug);
+        double[][] temp = eselonTereduksi(matriksAug);
+        double[] hasil = new double[temp.length];
+        for (int i = 0; i < temp.length; i++){
+            hasil[i] = temp[i][temp.length-1];
+        }
 
         System.out.print("P" + (matriks.length - 1) + "(x) = ");
 

@@ -38,7 +38,7 @@ public class menu {
 
                     choice = scan.nextInt();  
                     if (choice == 1) {                      //SPLGauss Keyboard
-                        double[][] M = inputKeyboard.inputKeyboardSplSquare();
+                        double[][] M = inputKeyboard.inputKeyboardSpl();
                         String[] akhir = reductionPlus.SPLGauss(M);
                         if(InputOutput.DoYouWantToWriteToFile()){
                             InputOutput.WriteToFile(akhir);
@@ -59,7 +59,7 @@ public class menu {
 
                     choice = scan.nextInt();  
                     if (choice == 1) {                      //SPLGaussJordan Keyboard
-                        double[][] M = inputKeyboard.inputKeyboardSplSquare();
+                        double[][] M = inputKeyboard.inputKeyboardSpl();
                         String[] akhir = reductionPlus.SPLGaussJordan(M);
                         if(InputOutput.DoYouWantToWriteToFile()){
                             InputOutput.WriteToFile(akhir);
@@ -186,7 +186,8 @@ public class menu {
 
                 choice = scan.nextInt();  
                 if (choice == 1) {                          //Regresi Linear Berganda File
-                    
+                    double[][]M = inputKeyboard.inputKeyboardRegresi();
+                    matrix.tulisMatrix(M);
                 } else if (choice == 2) {                   //Regresi Linear Berganda Keyboard
                     
                 }
