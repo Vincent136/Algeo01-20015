@@ -145,16 +145,28 @@ class invers {
         } else {
             System.out.println("Matrix tidak persegi");
         }
-
     }
 
-    public static String[] SPL(double[][] Matriks, double[] Baris) {
-        double[] Hasil = new double[Matriks.length];
-        String[] akhir = new String[Matriks.length];
-        for (int i = 0; i < Matriks.length; i++) {
+    public static String[] SPL(double[][] Matriks) {
+        double[][] matriksA = new double[Matriks.length][Matriks[0].length - 1]; 
+        double[] Baris = new double[Matriks.length]; 
+
+        // membentuk matrix koefisien dari persamaan linier 
+        matrix.copyMatrix(matriksA, Matriks);
+        
+        // membentuk matrix hasil masing-masing persamaan
+        for (int x = 0; x < Matriks.length; x++){
+            Baris[x] = Matriks[x][Matriks[0].length - 1];
+        }
+
+        InverseMatriks(matriksA);
+
+        double[] Hasil = new double[matriksA.length];
+        String[] akhir = new String[matriksA.length];
+        for (int i = 0; i < matriksA.length; i++) {
             double total = 0;
-            for (int j = 0; j < Matriks.length; j++) {
-                total += Matriks[i][j] * Baris[j];
+            for (int j = 0; j < matriksA.length; j++) {
+                total += matriksA[i][j] * Baris[j];
             }
             Hasil[i] = total;
         }
@@ -164,18 +176,18 @@ class invers {
         return akhir;
     }
 
-    public static void main(String[] args) {
-        double[][] m1;
-        double[] baris;
-        String[] l2;
-        m1 = InputMatrix();
-        InverseMatriks(m1);
-        baris = InputBaris();
-        l2 = SPL(m1, baris);
-        for (int i = 0; i < l2.length; i++) {
-            System.out.println(String.format("%s", l2[i]));
-        }
-    }
+    // public static void main(String[] args) {
+    //     double[][] m1;
+    //     double[] baris;
+    //     String[] l2;
+    //     m1 = InputMatrix();
+    //     InverseMatriks(m1);
+    //     baris = InputBaris();
+    //     l2 = SPL(m1, baris);
+    //     for (int i = 0; i < l2.length; i++) {
+    //         System.out.println(String.format("%s", l2[i]));
+    //     }
+    // }
 
     public static void reductionInverse(double[][] Matriks) {
         double[][] temp = new double[Matriks.length][2 * Matriks[0].length];
@@ -187,12 +199,9 @@ class invers {
         for(int j = 0; j < Matriks.length; j++){
             temp[j][Matriks.length + j] = 1.0;
         }
-        matrix.tulisMatrix(temp);
-        
         reductionPlus.Reduction(temp);
         reductionPlus.MakeRowOne(temp);
         reductionPlus.SecondaryReduction(temp);
-
         for(int i = 0; i < Matriks.length; i++){
             for(int j = 0; j < Matriks.length; j++){
                 Matriks[i][j] = temp[i][Matriks.length+j];
