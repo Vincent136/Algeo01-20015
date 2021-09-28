@@ -140,10 +140,10 @@ public class menu {
 
                     if (choice == 1) {                      //DeterminanReduksi Keyboard
                         double[][] M = inputKeyboard.inputKeyboardDeterminan();
-                        System.out.println("Determinan matriks = %.3f" + reductionPlus.DeterminanReduksi(M));
+                        System.out.println("Determinan matriks = " + reductionPlus.DeterminanReduksi(M));
                     } else if (choice == 2) {               //DeterminanReduksi File
                         double[][] M = InputOutput.ReadMatrixFromFile();
-                        System.out.println("Determinan matriks = %.3f" + reductionPlus.DeterminanReduksi(M));
+                        System.out.println("Determinan matriks = " + reductionPlus.DeterminanReduksi(M));
                     }
                 } else if (choice == 2) {                   //DeterminanReduksi Kofaktor
                     System.out.println();
