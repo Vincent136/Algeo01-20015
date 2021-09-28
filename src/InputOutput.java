@@ -46,7 +46,7 @@ public class InputOutput {
 
         } catch (FileNotFoundException e) {
             System.out.print("File Tidak Ditemukan/Terjadi Error");
-            double[][] MatriksInvalid = new double[0][0];
+            double[][] MatriksInvalid = new double[1][1];
             MatriksInvalid[0][0] = -999;
             return MatriksInvalid;
         }

@@ -44,12 +44,14 @@ public class menu {
                     if (choice == 1) {                      //SPLGauss Keyboard
                         double[][] M = inputKeyboard.inputKeyboardSpl();
                         String[] akhir = reductionPlus.SPLGauss(M);
+                        inputKeyboard.outputJawabanSPL(akhir);
                         if(InputOutput.DoYouWantToWriteToFile()){
                             InputOutput.WriteToFile(akhir);
                         }
                     } else if (choice == 2) {               //SPLGauss File
                         double[][] M = InputOutput.ReadMatrixFromFile();
                         String[] akhir = reductionPlus.SPLGauss(M);
+                        inputKeyboard.outputJawabanSPL(akhir);
                         if(InputOutput.DoYouWantToWriteToFile()){
                             InputOutput.WriteToFile(akhir);
                         }
@@ -67,12 +69,14 @@ public class menu {
                     if (choice == 1) {                      //SPLGaussJordan Keyboard
                         double[][] M = inputKeyboard.inputKeyboardSpl();
                         String[] akhir = reductionPlus.SPLGaussJordan(M);
+                        inputKeyboard.outputJawabanSPL(akhir);
                         if(InputOutput.DoYouWantToWriteToFile()){
                             InputOutput.WriteToFile(akhir);
                         }
                     } else if (choice == 2) {               //SPLGaussJordan File
                         double[][] M = InputOutput.ReadMatrixFromFile();
                         String[] akhir = reductionPlus.SPLGaussJordan(M);
+                        inputKeyboard.outputJawabanSPL(akhir);
                         if(InputOutput.DoYouWantToWriteToFile()){
                             InputOutput.WriteToFile(akhir);
                         }
@@ -105,7 +109,7 @@ public class menu {
                         double[][] M = inputKeyboard.inputKeyboardSplSquare();
                         double[] hasil = kofaktorPlus.cramer(M);
                         String[] akhir = kofaktorPlus.cramerToString(hasil);
-                        
+                        inputKeyboard.outputJawabanSPL(akhir);
                         if(InputOutput.DoYouWantToWriteToFile()){
                             InputOutput.WriteToFile(akhir);
                         }
@@ -113,7 +117,7 @@ public class menu {
                         double[][] M = InputOutput.ReadMatrixFromFile();
                         double[] hasil = kofaktorPlus.cramer(M);
                         String[] akhir = kofaktorPlus.cramerToString(hasil);
-                        
+                        inputKeyboard.outputJawabanSPL(akhir);
                         if(InputOutput.DoYouWantToWriteToFile()){
                             InputOutput.WriteToFile(akhir);
                         }
@@ -140,10 +144,10 @@ public class menu {
 
                     if (choice == 1) {                      //DeterminanReduksi Keyboard
                         double[][] M = inputKeyboard.inputKeyboardDeterminan();
-                        System.out.println("Determinan matriks = %.3f" + reductionPlus.DeterminanReduksi(M));
+                        System.out.println("Determinan matriks = " + reductionPlus.DeterminanReduksi(M));
                     } else if (choice == 2) {               //DeterminanReduksi File
                         double[][] M = InputOutput.ReadMatrixFromFile();
-                        System.out.println("Determinan matriks = %.3f" + reductionPlus.DeterminanReduksi(M));
+                        System.out.println("Determinan matriks = " + reductionPlus.DeterminanReduksi(M));
                     }
                 } else if (choice == 2) {                   //DeterminanReduksi Kofaktor
                     System.out.println();
