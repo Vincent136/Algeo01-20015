@@ -1,4 +1,3 @@
-import java.lang.Math;
 
 public class interpolasi {
     public static double[][] eselonTereduksi(double[][] Matriks){
@@ -7,7 +6,7 @@ public class interpolasi {
         reductionPlus.SecondaryReduction(Matriks);
         return Matriks;
     }
-    public static String[] interpolasiPolinom(double[][]matriks){
+    public static double[] interpolasiPolinom(double[][]matriks){
         //baca input x
         System.out.println();
 
@@ -33,78 +32,144 @@ public class interpolasi {
         }
 
         // proses interpolasi polinom
-        matrix.tulisMatrix(matriksAug);
-
         double[] temp = kofaktorPlus.cramer(matriksAug);
-        double[] hasil = new double[temp.length];
+        double[] hasilCramer = new double[temp.length];
         for (int i = 0; i < temp.length; i++){
-            hasil[i] = temp[i];
+            hasilCramer[i] = temp[i];
         }
 
+
+        // output persamaan interpolasi
         System.out.print("P" + (matriks.length - 1) + "(x) = ");
 
         boolean isAllZero = true;
-        for (int i = 0; i < hasil.length; i++){
+        for (int i = 0; i < hasilCramer.length; i++){
             if (i == 0) {
-                if (hasil[i] != 0){
-                    System.out.print(String.format("%.4f", hasil[i]));
+                if (hasilCramer[i] != 0){
+                    System.out.print(String.format("%.4f", hasilCramer[i]));
                     isAllZero = false;
                 }
             } else if(i == 1) {
                 if (!isAllZero){
-                    if (hasil[i] != 0){
-                        if (hasil[i] > 0) {
-                            System.out.print(" + " + String.format("%.4f", hasil[i]) + " x");
-                        } else if(hasil[i] < 0) {
-                            System.out.print(" - " + String.format("%.4f", -hasil[i]) + " x");
+                    if (hasilCramer[i] != 0){
+                        if (hasilCramer[i] > 0) {
+                            System.out.print(" + " + String.format("%.4f", hasilCramer[i]) + " x");
+                        } else if(hasilCramer[i] < 0) {
+                            System.out.print(" - " + String.format("%.4f", -hasilCramer[i]) + " x");
                         }
                         isAllZero = false;
                     } 
                 } else {
-                    if (hasil[i] != 0){
-                        System.out.print(String.format("%.4f", hasil[i]) + " x");
+                    if (hasilCramer[i] != 0){
+                        System.out.print(String.format("%.4f", hasilCramer[i]) + " x");
                         isAllZero = false;
                     }
                 }
             } else {
                 if (!isAllZero){
-                    if (hasil[i] > 0) {
-                        System.out.print(" + " + String.format("%.4f", hasil[i]) + "x^" + i);
-                    } else if(hasil[i] < 0) {
-                        System.out.print(" - " + String.format("%.4f", -1 * hasil[i]) + "x^" + i);
+                    if (hasilCramer[i] > 0) {
+                        System.out.print(" + " + String.format("%.4f", hasilCramer[i]) + "x^" + i);
+                    } else if(hasilCramer[i] < 0) {
+                        System.out.print(" - " + String.format("%.4f", -1 * hasilCramer[i]) + "x^" + i);
                     }
                 } else {
-                    if (hasil[i] != 0){
-                        System.out.print(String.format("%.4f", hasil[i]) + "x^" + i);
+                    if (hasilCramer[i] != 0){
+                        System.out.print(String.format("%.4f", hasilCramer[i]) + "x^" + i);
                         isAllZero = false;
                     }
                 }
             }
         }
         System.out.println();
-
+        return hasilCramer;
+    }
         // print P(X) dengan X sesuai input dari user
 
-        double x;
-        System.out.print("Masukan x: ");
-        x = menu.scan.nextDouble();
+    public static String[] outputInterpolasiKeyboard(double[] hasilCramer){
+        System.out.println();
 
+        // masukan jumlah x yang akan ditaksir
+        int n;
+        do{
+            System.out.print("Masukkan jumlah x yang ingin di taksir:");
+            while (!menu.scan.hasNextInt()) {
+                System.out.println("Input tidak valid!");
+                System.out.print("Masukkan jumlah x yang ingin di taksir:");
+                menu.scan.next(); 
+            }
+            n = menu.scan.nextInt();
+        } while (n <= 0);
 
-        double sum = 0;
-        for (int i = 0; i < hasil.length; i++){
-            System.out.println(sum + hasil[i] * power(x, i));
-            sum = sum + hasil[i] * Math.pow(x, i);
+        System.out.println();
+
+        // masukan masing-masing x
+        double[] x = new double[n];
+        for (int i = 0; i < n; i++){
+            System.out.print("Masukkan x:");
+            while (!menu.scan.hasNextDouble()) {
+                System.out.println("Input tidak valid!");
+                System.out.print("Masukkan x: ");
+                menu.scan.next(); 
+            }
+            x[i] = menu.scan.nextDouble();
+        }
+        System.out.println();
+
+        // proses mendapatkan nilai y dari dari x yang ingin ditaksir
+        double[] hasilInterpolasi = new double[n];
+        for (int j = 0; j < n; j++){
+            double sum = 0;
+            for (int i = 0; i < hasilCramer.length; i++){
+                sum = sum + hasilCramer[i] * power(x[j], i);
+            }
+            hasilInterpolasi[j] = sum;
         }
 
-        System.out.println("P" + (matriks.length - 1) + "(" + x + ") = " +String.format("%.4f", sum));
+        for (int k = 0; k < n; k++){
+            System.out.println("P" + (hasilCramer.length - 1) + "(" + x[k] + ") = " + hasilInterpolasi[k]);
+        }
 
-        String[] output = new String[1];
-        output[0] = String.format("Y = %.4f", sum);
+        String[] output = new String[n];
+        for (int l = 0; l < n; l++){
+            output[l] = String.format("P" + (hasilCramer.length - 1) + "(" + x[l] + ") = " + hasilInterpolasi[l]);
+        }
 
         System.out.println();
 
         return output;
     }
+
+    public static String[] outputInterpolasiFile(double[] hasilCramer, double[][] file){
+        System.out.println();
+
+        int n = file.length;
+        double[] x = new double[n];
+        for (int i = 0; i < n; i++){
+            x[i] = file[i][0];
+        }
+        double[] hasilInterpolasi = new double[n];
+        for (int j = 0; j < n; j++){
+            double sum = 0;
+            for (int i = 0; i < hasilCramer.length; i++){
+                sum = sum + hasilCramer[i] * power(x[j], i);
+            }
+            hasilInterpolasi[j] = sum;
+        }
+
+        for (int k = 0; k < n; k++){
+            System.out.println("P" + (hasilCramer.length - 1) + "(" + x[k] + ") = " + hasilInterpolasi[k]);
+        }
+
+        String[] output = new String[n];
+        for (int l = 0; l < n; l++){
+            output[l] = String.format("P" + (hasilCramer.length - 1) + "(" + x[l] + ") = " + hasilInterpolasi[l]);
+        }
+
+        System.out.println();
+
+        return output;
+    }
+
     private static double power(double x, int y) {
         double result = 1; 
         for (int i = 0; i < y; i++) 

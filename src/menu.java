@@ -7,6 +7,8 @@ public class menu {
         boolean keluar = false;
         while (!keluar){
             int choice;
+
+            System.out.println();
             System.out.println("Menu");
             System.out.println("1. Sistem Persamaan Linier");
             System.out.println("2. Determinan");
@@ -228,13 +230,18 @@ public class menu {
 
                 if (choice == 1) {                          //Interpolasi Polinom Keyboard
                     double[][]Mi = inputKeyboard.inputKeyboardInterpolasi();
-                    String[] akhir = interpolasi.interpolasiPolinom(Mi);
+                    double[] awal = interpolasi.interpolasiPolinom(Mi);
+                    String[] akhir = interpolasi.outputInterpolasiKeyboard(awal);
                     if(InputOutput.DoYouWantToWriteToFile()){
                         InputOutput.WriteToFile(akhir);
                     }
                 } else if (choice == 2) {                   //Interpolasi Polinom File
                     double[][]Mi = InputOutput.ReadMatrixFromFile();
-                    String[] akhir = interpolasi.interpolasiPolinom(Mi);
+                    double[] awal = interpolasi.interpolasiPolinom(Mi);
+                    System.out.println();
+                    System.out.println("Masukan nama file berisi x!");
+                    double[][] bacaX = InputOutput.ReadMatrixFromFile(); 
+                    String[] akhir = interpolasi.outputInterpolasiFile(awal, bacaX);
                     if(InputOutput.DoYouWantToWriteToFile()){
                         InputOutput.WriteToFile(akhir);
                     }
@@ -252,10 +259,21 @@ public class menu {
 
                 if (choice == 1) {                          //Regresi Linear Berganda File
                     double[][]M = inputKeyboard.inputKeyboardRegresi();
-                    regresi.regresiLinierBerganda(M);
+                    double[]awal = regresi.regresiLinierBerganda(M);
+                    String[]akhir = regresi.outputRegresiKeyboard(awal);
+                    if(InputOutput.DoYouWantToWriteToFile()){
+                        InputOutput.WriteToFile(akhir);
+                    }
                 } else if (choice == 2) {                   //Regresi Linear Berganda Keyboard
                     double[][]M = InputOutput.ReadMatrixFromFile();
-                    regresi.regresiLinierBerganda(M);
+                    double[]awal = regresi.regresiLinierBerganda(M);
+                    System.out.println();
+                    System.out.println("Masukan nama file berisi x!");
+                    double[][] bacaX = InputOutput.ReadMatrixFromFile(); 
+                    String[]akhir = regresi.outputRegresiFile(awal,bacaX);
+                    if(InputOutput.DoYouWantToWriteToFile()){
+                        InputOutput.WriteToFile(akhir);
+                    }
                 }
             }
             else if (choice == 6) {                         //Exit
