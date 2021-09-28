@@ -1,7 +1,15 @@
 import javax.swing.text.AbstractDocument.LeafElement;
-
 public class reductionPlus{
-    
+    public static void main(String[] args) {
+        double[][] Matriks = InputOutput.ReadMatrixFromFile();
+        Reduction(Matriks);
+        matrix.tulisMatrix(Matriks);
+        System.out.println("\n");
+        MakeRowOne(Matriks);
+        matrix.tulisMatrix(Matriks);
+        SecondaryReduction(Matriks);
+        matrix.tulisMatrix(Matriks);
+    }
     //Merubah matrix diinput menjadi matrix yg bawahnya doang 0 0 0.
     //Contoh:   1 2 3       1 2 3
     //          4 5 6 ->    0 -3 -6
@@ -75,6 +83,9 @@ public class reductionPlus{
         for (int r = 0; r < Matriks.length; r++) {
             int x=0;
             while (x < Matriks[0].length){
+                if(Math.abs(Matriks[r][x]) < 0.0000000000001){
+                    Matriks[r][x] = 0;
+                }
                 if(Matriks[r][x] == 0){
                     x++;
                 }
