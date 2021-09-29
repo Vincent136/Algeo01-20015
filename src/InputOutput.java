@@ -57,6 +57,7 @@ public class InputOutput {
         System.out.println("Apakah ingin di save di file?");  
         System.out.println("1.Yes");
         System.out.println("2.No");  
+        System.out.print("Masukan pilihan : ");
         int Option = scan.nextInt();
         
         while(Option != 1 && Option != 2 ){
@@ -64,6 +65,7 @@ public class InputOutput {
             System.out.println("Apakah ingin di save di file?");    
             System.out.println("1.Yes");
             System.out.println("2.No");
+            System.out.print("Masukan pilihan : ");
             Option = scan.nextInt();
         }
         if(Option == 1 ){

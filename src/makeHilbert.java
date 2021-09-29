@@ -1,5 +1,5 @@
 public class makeHilbert {
-    public static void main(String[] args) {
+    public static void makeHilbert() {
         double[][] Hilbert6 = new double[6][7];
         for (int i = 0; i < Hilbert6.length; i++) {
             for (int j = 0; j < Hilbert6.length; j++) {
