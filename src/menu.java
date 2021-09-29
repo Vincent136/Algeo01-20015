@@ -195,7 +195,7 @@ public class menu {
 
                     choice = scan.nextInt();  
                     System.out.println();
-                    if (choice == 1) {                          //MatriksBalikan Keyboard
+                    if (choice == 1) {                          //MatriksBalikanAdjoin Keyboard
                         double[][]M = inputKeyboard.inputKeyboardDeterminan();
                         invers.InverseMatriks(M);
                         System.out.println();
@@ -203,7 +203,7 @@ public class menu {
                             System.out.println("matriks balikan :");
                             matrix.tulisMatrix(M);
                         } 
-                    } else if (choice == 2) {                   //MatriksBalikan File
+                    } else if (choice == 2) {                   //MatriksBalikanAdjoin File
                         double[][]M = InputOutput.ReadMatrixFromFile();
                         invers.InverseMatriks(M);
                         if (M[0][0] != -Double.MAX_VALUE){
@@ -224,7 +224,7 @@ public class menu {
 
                     choice = scan.nextInt();  
                     System.out.println();
-                    if (choice == 1) {                          //MatriksBalikan Keyboard
+                    if (choice == 1) {                          //MatriksBalikanReduksi Keyboard
                         double[][]M = inputKeyboard.inputKeyboardDeterminan();
                         invers.InverseMatriks(M);
                         System.out.println();
@@ -233,7 +233,7 @@ public class menu {
                             System.out.println("matriks balikan :");
                             matrix.tulisMatrix(M);
                         } 
-                    } else if (choice == 2) {                   //MatriksBalikan File
+                    } else if (choice == 2) {                   //MatriksBalikanReduksi File
                         double[][]M = InputOutput.ReadMatrixFromFile();
                         invers.reductionInverse(M);
                         System.out.println();
