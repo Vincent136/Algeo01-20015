@@ -91,9 +91,19 @@ public class menu {
                     choice = scan.nextInt();  
                     System.out.println();
                     if (choice == 1) {                      //SPLMatriksBalikan Keyboard
-                        
+                        double[][] M = inputKeyboard.inputKeyboardSplSquare();
+                        String[] akhir = invers.SPL(M);
+                        inputKeyboard.outputJawabanSPL(akhir);
+                        if(InputOutput.DoYouWantToWriteToFile()){
+                            InputOutput.WriteToFile(akhir);
+                        }
                     } else if (choice == 2) {               //SPLMatriksBalikan File
-                        
+                        double[][] M = InputOutput.ReadMatrixFromFile();
+                        String[] akhir = invers.SPL(M);
+                        inputKeyboard.outputJawabanSPL(akhir);
+                        if(InputOutput.DoYouWantToWriteToFile()){
+                            InputOutput.WriteToFile(akhir);
+                        }
                     }
                 }else if (choice == 4) {                    //SPLCramer
                     System.out.println();

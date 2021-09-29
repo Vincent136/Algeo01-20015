@@ -33,7 +33,6 @@ public class interpolasi {
 
         // proses interpolasi polinom
         double[][] temp = eselonTereduksi(matriksAug);
-        matrix.tulisMatrix(temp);
         double[] hasilCramer = new double[temp.length];
         for (int i = 0; i < temp.length; i++){
             hasilCramer[i] = temp[i][temp[0].length-1];
