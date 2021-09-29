@@ -125,8 +125,15 @@ class invers {
             det = Determinan(Matriks);
             double[][] temp1 = new double[Matriks.length][Matriks[0].length];
             double[][] temp2 = new double[Matriks.length][Matriks[0].length];
-            if (det == 0)
+            if (det == 0){
                 System.out.println("Tidak ada invers");
+                for(int k = 0; k < Matriks.length; k++)
+                {
+                    for (int l = 0; l < Matriks[0].length; l++){
+                        Matriks[k][l] = -Double.MAX_VALUE;
+                    }
+                }
+            }
             else {
                 temp1 = MinorMatriks(Matriks);
                 KofaktorMatriks(temp1);
@@ -144,6 +151,12 @@ class invers {
             }
         } else {
             System.out.println("Matrix tidak persegi");
+            for(int k = 0; k < Matriks.length; k++)
+            {
+                for (int l = 0; l < Matriks[0].length; l++){
+                    Matriks[k][l] = -Double.MAX_VALUE;
+                }
+            }
         }
     }
 
@@ -161,19 +174,26 @@ class invers {
 
         InverseMatriks(matriksA);
 
-        double[] Hasil = new double[matriksA.length];
-        String[] akhir = new String[matriksA.length];
-        for (int i = 0; i < matriksA.length; i++) {
-            double total = 0;
-            for (int j = 0; j < matriksA.length; j++) {
-                total += matriksA[i][j] * Baris[j];
+        if (matriksA[0][0] != -Double.MAX_VALUE){
+            double[] Hasil = new double[matriksA.length];
+            String[] akhir = new String[matriksA.length];
+            for (int i = 0; i < matriksA.length; i++) {
+                double total = 0;
+                for (int j = 0; j < matriksA.length; j++) {
+                    total += matriksA[i][j] * Baris[j];
+                }
+                Hasil[i] = total;
             }
-            Hasil[i] = total;
+            for (int i = 0; i < Hasil.length; i++) {
+                akhir[i] = (String.format("x%d = %,.2f", i + 1, Hasil[i]));
+            }
+            return akhir;
+        } else {
+            String[] akhir = new String[1];
+            akhir[0] = "Solusi bisa jadi tidak ada atau memiliki solusi banyak, tidak dapat diselesaikan dengan matriks balikan";
+
+            return akhir;
         }
-        for (int i = 0; i < Hasil.length; i++) {
-            akhir[i] = (String.format("x%d = %,.2f", i + 1, Hasil[i]));
-        }
-        return akhir;
     }
 
     // public static void main(String[] args) {
@@ -202,9 +222,26 @@ class invers {
         reductionPlus.Reduction(temp);
         reductionPlus.MakeRowOne(temp);
         reductionPlus.SecondaryReduction(temp);
-        for(int i = 0; i < Matriks.length; i++){
-            for(int j = 0; j < Matriks.length; j++){
-                Matriks[i][j] = temp[i][Matriks.length+j];
+        
+        boolean exists = true;
+        int m = 0;
+        while (exists && m < temp.length){
+            if(temp[m][m] != 1){
+                for(int k = 0; k < Matriks.length; k++)
+                {
+                    for (int l = 0; l < Matriks[0].length; l++){
+                        Matriks[k][l] = -Double.MAX_VALUE;
+                    }
+                }
+                exists =false;
+            }
+            m++;
+        }
+        if (exists){
+            for(int i = 0; i < Matriks.length; i++){
+                for(int j = 0; j < Matriks.length; j++){
+                    Matriks[i][j] = temp[i][Matriks.length+j];
+                }
             }
         }
     }

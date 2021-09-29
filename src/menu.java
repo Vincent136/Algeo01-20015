@@ -189,14 +189,21 @@ public class menu {
                         double[][]M = inputKeyboard.inputKeyboardDeterminan();
                         invers.InverseMatriks(M);
                         System.out.println();
-                        System.out.println("matriks balikan :");
-                        matrix.tulisMatrix(M);
+                        if (M[0][0] != -Double.MAX_VALUE){
+                            System.out.println("matriks balikan :");
+                            matrix.tulisMatrix(M);
+                        } 
                     } else if (choice == 2) {                   //MatriksBalikan File
                         double[][]M = InputOutput.ReadMatrixFromFile();
                         invers.InverseMatriks(M);
-                        System.out.println();
-                        System.out.println("matriks balikan :");
-                        matrix.tulisMatrix(M);
+                        if (M[0][0] != -Double.MAX_VALUE){
+                            System.out.println();
+                            System.out.println("matriks balikan :");
+                            matrix.tulisMatrix(M);
+                        } else {
+                            System.out.println();
+                            System.out.println("tidak punya invers.");
+                        }
                     }
                 } else if (choice == 2) {
                     System.out.println();
@@ -209,16 +216,25 @@ public class menu {
                     System.out.println();
                     if (choice == 1) {                          //MatriksBalikan Keyboard
                         double[][]M = inputKeyboard.inputKeyboardDeterminan();
-                        invers.reductionInverse(M);
+                        invers.InverseMatriks(M);
                         System.out.println();
-                        System.out.println("matriks balikan :");
-                        matrix.tulisMatrix(M);
+                        if (M[0][0] != -Double.MAX_VALUE){
+                            System.out.println();
+                            System.out.println("matriks balikan :");
+                            matrix.tulisMatrix(M);
+                        } 
                     } else if (choice == 2) {                   //MatriksBalikan File
                         double[][]M = InputOutput.ReadMatrixFromFile();
                         invers.reductionInverse(M);
                         System.out.println();
-                        System.out.println("matriks balikan :");
-                        matrix.tulisMatrix(M);
+                        if (M[0][0] != -Double.MAX_VALUE){
+                            System.out.println();
+                            System.out.println("matriks balikan :");
+                            matrix.tulisMatrix(M);
+                        } else {
+                            System.out.println();
+                            System.out.println("tidak punya invers.");
+                        }
                     }
                 }
             }
