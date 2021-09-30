@@ -286,8 +286,6 @@ public class reductionPlus{
     public static String[] SPLGaussJordan(double [][] Matriks){
         Reduction(Matriks);
         MakeRowOne(Matriks);
-        SecondaryReduction(Matriks);
-        
         int non_zero_rows=0;    //Banyak row yang tidak kosong (nol)
         for (int r = 0; r < Matriks.length; r++) {
             int x=0;
@@ -301,6 +299,8 @@ public class reductionPlus{
                 }
             }
         }
+
+        SecondaryReduction(Matriks);
 
         boolean Validity = false;                               //Mengecheck kalau matrix augmented valid atau tidak 
         for (int j = 0; j < Matriks[0].length-1; j++) {

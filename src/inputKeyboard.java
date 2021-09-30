@@ -4,7 +4,7 @@ public class inputKeyboard {
         double[][] matriks;
         double[][] matriksB;
         double[][] matriksAug;
-        System.out.print("Masukan n: ");
+        System.out.print("Masukan row & kolom: ");
         n = menu.scan.nextInt();
         if (n <= 0){
             boolean isValid = false;
@@ -30,7 +30,7 @@ public class inputKeyboard {
         
         matriksB = new double[n][1];
         
-        System.out.println("Masukkan baris b!");
+        System.out.println("Masukkan matriks b!");
         for(int i = 0; i < n; i++){
             matriksB[i][0] = menu.scan.nextDouble();
         }
@@ -52,7 +52,7 @@ public class inputKeyboard {
         double[][] matriks;
         double[][] matriksB;
         double[][] matriksAug;
-        System.out.print("Masukan n: ");
+        System.out.print("Masukan row: ");
         n = menu.scan.nextInt();
         if (n <= 0){
             boolean isValid = false;
@@ -65,7 +65,7 @@ public class inputKeyboard {
                 }
             }
         }
-        System.out.print("Masukan m: ");
+        System.out.print("Masukan kolom: ");
         m = menu.scan.nextInt();
         if (m <= 0){
             boolean isValid = false;
@@ -90,7 +90,7 @@ public class inputKeyboard {
         
         matriksB = new double[n][1];
         
-        System.out.println("Masukkan baris b!");
+        System.out.println("Masukkan matriks b!");
         for(int i = 0; i < n; i++){
             matriksB[i][0] = menu.scan.nextDouble();
         }
@@ -111,7 +111,7 @@ public class inputKeyboard {
         int n;
         double[][] matriks;
 
-        System.out.print("Masukan n: ");
+        System.out.print("Masukan row & kolom: ");
         n = menu.scan.nextInt();
         if (n <= 0){
             boolean isValid = false;
@@ -140,7 +140,7 @@ public class inputKeyboard {
         int n;
         double[][] matriks;
 
-        System.out.print("Masukan n: ");
+        System.out.print("Masukan jumlah titik: ");
         n = menu.scan.nextInt();
         if (n <= 0){
             boolean isValid = false;
@@ -170,7 +170,7 @@ public class inputKeyboard {
         int k;
         double[][] matriks;
 
-        System.out.print("Masukan n: ");
+        System.out.print("Masukan jumlah peubah : ");
         n = menu.scan.nextInt();
         
         if (n <= 0){
@@ -185,7 +185,7 @@ public class inputKeyboard {
             }
         }
 
-        System.out.print("Masukan k: ");
+        System.out.print("Masukan jumlah persamaan: ");
         k = menu.scan.nextInt();
         if (k <= 0){
             boolean isValid = false;

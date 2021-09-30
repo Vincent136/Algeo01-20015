@@ -55,7 +55,7 @@ public class makeHilbert {
             for (int i = 0; i < Hilbert10.length; i++) {
                 for (int j = 0; j < Hilbert10[0].length; j++) {
                     Isifile += Double.toString(Hilbert10[i][j]);
-                    if(j != Hilbert6[0].length){
+                    if(j != Hilbert10[0].length){
                         Isifile+=" ";
                     }
                 }
