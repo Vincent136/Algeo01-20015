@@ -119,14 +119,38 @@ class invers {
     }
 
     public static void InverseMatriks(double[][] Matriks) {
-
-        if (IsSquare(Matriks)) {
-            double det;
-            det = Determinan(Matriks);
-            double[][] temp1 = new double[Matriks.length][Matriks[0].length];
-            double[][] temp2 = new double[Matriks.length][Matriks[0].length];
-            if (det == 0){
-                System.out.println("Tidak ada invers");
+        if (Matriks.length != 1) {
+            if (IsSquare(Matriks)) {
+                double det;
+                det = Determinan(Matriks);
+                double[][] temp1 = new double[Matriks.length][Matriks[0].length];
+                double[][] temp2 = new double[Matriks.length][Matriks[0].length];
+                if (det == 0){
+                    System.out.println("Tidak ada invers");
+                    for(int k = 0; k < Matriks.length; k++)
+                    {
+                        for (int l = 0; l < Matriks[0].length; l++){
+                            Matriks[k][l] = -Double.MAX_VALUE;
+                        }
+                    }
+                }
+                else {
+                    temp1 = MinorMatriks(Matriks);
+                    KofaktorMatriks(temp1);
+                    temp1 = TransposeMatriks(temp1);
+                    for (int i = 0; i < Matriks.length; i++) {
+                        for (int j = 0; j < Matriks.length; j++) {
+                            temp2[i][j] = (1 / Determinan(Matriks)) * temp1[i][j];
+                        }
+                    }
+                    for (int i = 0; i < Matriks.length; i++) {
+                        for (int j = 0; j < Matriks.length; j++) {
+                            Matriks[i][j] = temp2[i][j];
+                        }
+                    }
+                }
+            } else {
+                System.out.println("Matrix tidak persegi");
                 for(int k = 0; k < Matriks.length; k++)
                 {
                     for (int l = 0; l < Matriks[0].length; l++){
@@ -134,30 +158,7 @@ class invers {
                     }
                 }
             }
-            else {
-                temp1 = MinorMatriks(Matriks);
-                KofaktorMatriks(temp1);
-                temp1 = TransposeMatriks(temp1);
-                for (int i = 0; i < Matriks.length; i++) {
-                    for (int j = 0; j < Matriks.length; j++) {
-                        temp2[i][j] = (1 / Determinan(Matriks)) * temp1[i][j];
-                    }
-                }
-                for (int i = 0; i < Matriks.length; i++) {
-                    for (int j = 0; j < Matriks.length; j++) {
-                        Matriks[i][j] = temp2[i][j];
-                    }
-                }
-            }
-        } else {
-            System.out.println("Matrix tidak persegi");
-            for(int k = 0; k < Matriks.length; k++)
-            {
-                for (int l = 0; l < Matriks[0].length; l++){
-                    Matriks[k][l] = -Double.MAX_VALUE;
-                }
-            }
-        }
+        } 
     }
 
     public static String[] SPL(double[][] Matriks) {
@@ -210,37 +211,39 @@ class invers {
     // }
 
     public static void reductionInverse(double[][] Matriks) {
-        double[][] temp = new double[Matriks.length][2 * Matriks[0].length];
-        for(int i = 0; i < Matriks.length; i++) {
-            for(int j = 0; j < Matriks.length; j++){
-                temp[i][j] = Matriks[i][j];
-            }
-        }
-        for(int j = 0; j < Matriks.length; j++){
-            temp[j][Matriks.length + j] = 1.0;
-        }
-        reductionPlus.Reduction(temp);
-        reductionPlus.MakeRowOne(temp);
-        reductionPlus.SecondaryReduction(temp);
-        
-        boolean exists = true;
-        int m = 0;
-        while (exists && m < temp.length){
-            if(temp[m][m] != 1){
-                for(int k = 0; k < Matriks.length; k++)
-                {
-                    for (int l = 0; l < Matriks[0].length; l++){
-                        Matriks[k][l] = -Double.MAX_VALUE;
-                    }
-                }
-                exists =false;
-            }
-            m++;
-        }
-        if (exists){
-            for(int i = 0; i < Matriks.length; i++){
+        if (Matriks.length != 1) {
+            double[][] temp = new double[Matriks.length][2 * Matriks[0].length];
+            for(int i = 0; i < Matriks.length; i++) {
                 for(int j = 0; j < Matriks.length; j++){
-                    Matriks[i][j] = temp[i][Matriks.length+j];
+                    temp[i][j] = Matriks[i][j];
+                }
+            }
+            for(int j = 0; j < Matriks.length; j++){
+                temp[j][Matriks.length + j] = 1.0;
+            }
+            reductionPlus.Reduction(temp);
+            reductionPlus.MakeRowOne(temp);
+            reductionPlus.SecondaryReduction(temp);
+            
+            boolean exists = true;
+            int m = 0;
+            while (exists && m < temp.length){
+                if(temp[m][m] != 1){
+                    for(int k = 0; k < Matriks.length; k++)
+                    {
+                        for (int l = 0; l < Matriks[0].length; l++){
+                            Matriks[k][l] = -Double.MAX_VALUE;
+                        }
+                    }
+                    exists =false;
+                }
+                m++;
+            }
+            if (exists){
+                for(int i = 0; i < Matriks.length; i++){
+                    for(int j = 0; j < Matriks.length; j++){
+                        Matriks[i][j] = temp[i][Matriks.length+j];
+                    }
                 }
             }
         }
