@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 class invers {
 
     // public static double[][] InputMatrix() {
