@@ -64,14 +64,14 @@ public class reductionPlus{
     }
 
     //print matrix
-    public static void PrintMatriks(double [][] Matriks) {
-        for (int r = 0; r < Matriks.length; r++) {
-			for (int c = 0; c < Matriks[0].length; c++) {
-				System.out.print(Matriks[r][c] + "\t");
-			}
-			System.out.println();
-        }
-    }
+    // public static void PrintMatriks(double [][] Matriks) {
+    //     for (int r = 0; r < Matriks.length; r++) {
+	// 		for (int c = 0; c < Matriks[0].length; c++) {
+	// 			System.out.print(Matriks[r][c] + "\t");
+	// 		}
+	// 		System.out.println();
+    //     }
+    // }
     
     //Membagi tiap row dengan bilangan paling kiri tak 0
     //Contoh:   9 18 9      1 2 1

@@ -2,37 +2,37 @@ import java.util.Scanner;
 
 class invers {
 
-    public static double[][] InputMatrix() {
-        System.out.println("Please enter the rows in the Matriks");
-        Scanner sc = new Scanner(System.in);
-        int row = sc.nextInt();
-        System.out.println("Please enter the columns in the Matriks");
-        int column = sc.nextInt();
+    // public static double[][] InputMatrix() {
+    //     System.out.println("Please enter the rows in the Matriks");
+    //     Scanner sc = new Scanner(System.in);
+    //     int row = sc.nextInt();
+    //     System.out.println("Please enter the columns in the Matriks");
+    //     int column = sc.nextInt();
 
-        double[][] Matriks = new double[row][column];
+    //     double[][] Matriks = new double[row][column];
 
-        for (int r = 0; r < row; r++) {
-            for (int c = 0; c < column; c++) {
-                System.out.println(String.format("Enter Matriks[%d][%d] integer", r, c));
-                Matriks[r][c] = sc.nextInt();
-            }
-        }
-        return Matriks;
-    }
+    //     for (int r = 0; r < row; r++) {
+    //         for (int c = 0; c < column; c++) {
+    //             System.out.println(String.format("Enter Matriks[%d][%d] integer", r, c));
+    //             Matriks[r][c] = sc.nextInt();
+    //         }
+    //     }
+    //     return Matriks;
+    // }
 
-    public static double[] InputBaris() {
-        System.out.println("Please enter the rows in the arrays");
-        Scanner ar = new Scanner(System.in);
-        int row = ar.nextInt();
+    // public static double[] InputBaris() {
+    //     System.out.println("Please enter the rows in the arrays");
+    //     Scanner ar = new Scanner(System.in);
+    //     int row = ar.nextInt();
 
-        double[] Baris = new double[row];
+    //     double[] Baris = new double[row];
 
-        for (int x = 0; x < row; x++) {
-            System.out.println(String.format("Enter Arrays[%d] integer", x));
-            Baris[x] = ar.nextInt();
-        }
-        return Baris;
-    }
+    //     for (int x = 0; x < row; x++) {
+    //         System.out.println(String.format("Enter Arrays[%d] integer", x));
+    //         Baris[x] = ar.nextInt();
+    //     }
+    //     return Baris;
+    // }
 
     public static boolean IsSquare(double[][] Matrix) {
         for (int i = 0, l = Matrix.length; i < l; i++) {
@@ -43,14 +43,14 @@ class invers {
         return true;
     }
 
-    public static void PrintMatrix(double[][] Matriks) {
-        for (int i = 0; i < Matriks.length; i++) {
-            for (int j = 0; j < Matriks.length; j++) {
-                System.out.print(Matriks[i][j] + " ");
-            }
-            System.out.print("\n");
-        }
-    }
+    // public static void PrintMatrix(double[][] Matriks) {
+    //     for (int i = 0; i < Matriks.length; i++) {
+    //         for (int j = 0; j < Matriks.length; j++) {
+    //             System.out.print(Matriks[i][j] + " ");
+    //         }
+    //         System.out.print("\n");
+    //     }
+    // }
 
     public static double Determinan(double[][] Matriks) {
         double determinan;
