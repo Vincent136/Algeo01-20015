@@ -27,7 +27,12 @@ public class regresi{
                 }
             temp[i][0] = sum;
         }
-        double[] hasil = kofaktorPlus.cramer(temp);
+        double[][] temp2 = interpolasi.eselonTereduksi(temp);
+        double[] hasil = new double[temp2.length];
+        for(int i = 0; i < temp2.length; i++) {
+            hasil[i] = temp2[i][temp2[0].length-1];
+        }
+        
         
         System.out.println();
         System.out.print("Y = ");
